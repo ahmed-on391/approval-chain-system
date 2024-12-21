@@ -1,0 +1,67 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Approval Chain API",
+        "description": "API documentation for the project approval chain feature.",
+        "contact": {
+            "email": ""
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/projects/{projectId}/approval-chain": {
+            "get": {
+                "tags": [
+                    "Approval Chain"
+                ],
+                "summary": "Get approval chain for a project",
+                "operationId": "c0bb0d20092de631fceea2928354cb27",
+                "parameters": [
+                    {
+                        "name": "projectId",
+                        "in": "path",
+                        "description": "Project ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Approval chain retrieved successfully"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Approval Chain"
+                ],
+                "summary": "Create approval chain for a project",
+                "operationId": "6b331eb3d464a8abf767d261f44a57a4",
+                "parameters": [
+                    {
+                        "name": "projectId",
+                        "in": "path",
+                        "description": "Project ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Approval chain created successfully"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Approval Chain",
+            "description": "Approval Chain"
+        }
+    ]
+}

@@ -1,0 +1,76 @@
+openapi: 3.0.3
+info:
+  title: Approval Chain API
+  description: Documentation for project approval APIs.
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8000
+    description: Local Server
+
+paths:
+  /projects/{project}/approval-chain:
+    get:
+      summary: Fetch Approval Chain
+      description: Get the approval chain details for a project.
+      parameters:
+        - name: project
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: Project ID
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  approval_chain:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        user:
+                          type: string
+                          description: Approver name
+                        status:
+                          type: string
+                          description: Approval status (e.g., Approved, Pending)
+                        timestamp:
+                          type: string
+                          format: date-time
+        '404':
+          description: Project not found
+
+  /projects/{project}/approval-chain/approve:
+    post:
+      summary: Approve Project
+      description: Approve and forward a project to the next approver.
+      parameters:
+        - name: project
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: Project ID
+      requestBody:
+        description: Approval details
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                approver_id:
+                  type: integer
+                  description: Approver's ID
+      responses:
+        '200':
+          description: Approval successful
+        '400':
+          description: Bad request
+        '404':
+          description: Project or approver not found
