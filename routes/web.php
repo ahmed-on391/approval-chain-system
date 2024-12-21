@@ -47,12 +47,8 @@ Route::name('oidc.')
         Route::get('/projects', [ProjectController::class, 'index'])->name('filament.resources.projects.index');
     });
         
-// Route::prefix('projects')->group(function () {
-//     Route::prefix('approval-chain')->group(function () {
-//         Route::post('{projectId}/approve', [ApprovalChainController::class, 'approve'])->name('projects.approval-chain.approve');
-//         Route::post('{projectId}/reject', [ApprovalChainController::class, 'reject'])->name('projects.approval-chain.reject');
-//     });
-// });
+// route with Approval
+
 
 Route::prefix('projects')->group(function () {
     Route::get('/', [ProjectController::class, 'index'])->name('projects.index');
